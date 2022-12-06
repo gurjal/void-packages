@@ -1,0 +1,13 @@
+# Template file for 'zk'
+pkgname=zk
+version=0.12.0
+revision=1
+build_style=go
+go_import_path="github.com/mickael-menu/zk"
+go_build_tags="fts5"
+short_desc="Plain text note-taking assistant"
+maintainer="gurjal <gurjal@proton.me>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/mickael-menu/zk"
+distfiles="${homepage}/archive/refs/tags/v${version}.tar.gz"
+checksum=c51d21a26a06c63c0dcdac262fd1a2a4e8d69f7f05dc0ec6aaa0365012d35781
