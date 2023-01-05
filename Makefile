@@ -8,7 +8,7 @@ update:
 	@echo
 	@echo "	updated pkgs: ${pkgupdates}"
 	@echo
-repo_update:
+sync:
 	git pull --rebase upstream master
-add_upstream:
+setupstream:
 	git remote add upstream https://github.com/void-linux/void-packages.git
