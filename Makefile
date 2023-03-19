@@ -1,7 +1,7 @@
 pkgupdates := $(shell ./xbps-src show-local-updates)
 
 show:
-	@echo ${pkgupdates}
+	@echo "current available updates:\n${pkgupdates}"
 sync:
 	git pull --rebase upstream master
 	@./xbps-src bootstrap-update
@@ -11,7 +11,7 @@ update:
 	@echo
 	@echo "	updated pkgs: ${pkgupdates}"
 	@echo
-save:
+pushbranch:
 	git push -fu origin master
 setupstream:
 	git remote add upstream https://github.com/void-linux/void-packages.git
