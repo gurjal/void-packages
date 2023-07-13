@@ -10,7 +10,7 @@ help:
 	@echo "    help"
 list:
 	@xpkg -mL | grep ':'
-	@echo "current available upgrades:\n${pkgupgrades}"
+	@echo "\ncurrent available upgrades:\n${pkgupgrades}"
 sync:
 	git pull --rebase upstream master
 upgrade:
