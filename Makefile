@@ -1,28 +1,25 @@
-pkgupdates := $(shell ./xbps-src show-local-updates)
+pkgupgrades := $(shell ./xbps-src show-local-updates)
 
-show:
-	@echo "current available updates:\n${pkgupdates}"
+help:
+	@echo "usage:"
+	@echo "    list           list and show available upgrades for source packages"
+	@echo "    sync           pull upstream repo and upgrade bootstrapped packages"
+	@echo "    upgrade        upgrade source packages"
+	@echo "    pushmyrepo     force push personal repo"
+	@echo "    setupstream    set remote 'uptream' url to official void-packages repo"
+	@echo "    help"
 list:
 	@xpkg -mL | grep ':'
+	@echo "current available upgrades:\n${pkgupgrades}"
 sync:
 	git pull --rebase upstream master
+upgrade:
 	@./xbps-src bootstrap-update
-update:
-	@./xbps-src bootstrap-update
-	@xbulk ${pkgupdates}
+	@xbulk ${pkgupgrades}
 	@echo
-	@echo "	updated pkgs: ${pkgupdates}"
+	@echo "	upgraded pkgs: ${pkgupgrades}"
 	@echo
-pushbranch:
+pushmyrepo:
 	git push -fu origin master
 setupstream:
 	git remote add upstream https://github.com/void-linux/void-packages.git
-help:
-	@echo "usage:"
-	@echo "    show           show available updates for local repo packages"
-	@echo "    list           list manual local repo packages"
-	@echo "    sync           pull upstream repo and update bootstrapped packages"
-	@echo "    update         update manual and bootstrapped local repo packages"
-	@echo "    pushbranch     force push personal repo"
-	@echo "    setupstream    set remote 'uptream' to official void-packages repo"
-	@echo "    help"
